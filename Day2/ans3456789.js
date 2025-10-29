@@ -40,8 +40,6 @@ function mergeSort(arr, start, end) {
   return;
 }
 
-
-
 function merge(arr, start, mid, end) {
   var temp = [];
   var left = start;
@@ -70,6 +68,8 @@ function merge(arr, start, mid, end) {
     arr[start + k] = temp[k];
   }
 }
+
+mergeSort(arr,0,arr.length-1);
 console.log(arr);
 
 
@@ -87,6 +87,7 @@ function reverse(arr) {
   }
   return arr;
 }
+reverse(arr);
 console.log(arr);
 
 
