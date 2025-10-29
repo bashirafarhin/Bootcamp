@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .changing-color {
+            width: 500px;
+            height: 500px;
+            margin: 100px auto;
+            background-color: red;
+        }
+
+        .hover {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="changing-color" id="change-color"></div>
+
+    <script>
+
+        var div = document.getElementById("change-color");
+        div.addEventListener("mouseenter", function() {
+            div.classList.add("hover")
+        })
+
+        div.addEventListener("mouseleave", function() {
+            div.classList.remove("hover")
+        })
+
+    </script>
+
+</body>
+</html>

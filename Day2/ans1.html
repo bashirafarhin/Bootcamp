@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onSubmit="return validateForm()">
+        <label for="name">Name:</label>
+        <input id="name" type="text" placeholder="Enter your name"/>
+
+        <br/>
+
+        <label for="age">Age:</label>
+        <input id="age" type="number" placeholder="Enter your age"/>
+
+        <br/>
+        <button type="submit">Submit</button>
+       
+    </form>
+
+
+
+    <script>
+
+    function validateForm() {
+        var name = document.getElementById("name").value.trim();
+        var age = document.getElementById("age").value.trim();
+        if(name === ""){
+            alert("Name should not be empty");
+            return false;
+        }
+
+        if(age === ""){
+            alert("Age should not be empty");
+            return false;
+        }
+
+        if(age < 17){
+            alert("Age should be greater than or equal to 18");
+            return false;
+        }
+
+        alert("Form Submitted successfully")
+        return true;
+    }
+
+</script>
+
+</body>
+
+</html>
