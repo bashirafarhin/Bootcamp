@@ -49,7 +49,28 @@ console.log(selectKeys(input));
 
 
 
+// approach 2
+// dynamic and not changing the data
 
+const objHasKeys = (obj, newObj, keySet) => {
+    if(obj===null || obj===undefined){ return; }
+    for(let key of Object.keys(obj)){
+        if(keySet.has(key)){
+            newObj[key]=obj[key];
+        }
+        if(typeof obj[key]==='object'){
+            objHasKeys(obj[key], newObj, keySet)
+        }
+    }
+}
 
+const selectKeys2 = (inputArr, ...keys) => {
+    const keySet = new Set(keys);
+    return inputArr.map((obj) => {
+        let newObj={};
+        objHasKeys(obj,newObj,keySet);
+        return newObj;
+    }); // only insert if obj len is >1
+}
 
-// approach 2   
+console.log(selectKeys2(input,"id","title","rate","count"));
