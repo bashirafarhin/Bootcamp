@@ -21,11 +21,19 @@ console.log(arr[1]);
 
 
 // Replace all occurrences of a number with another number.
-arr = arr.map(function (ele) {
-  return ele === 1 ? 2 : ele;
-});
-console.log(arr);
 
+// by creating new array
+const replace = (arr, oldVal, newVal) => {
+  return arr.map((ele) => ele==oldVal ? newVal : ele);
+}
+console.log(replace(arr,1,2));
+
+// by manipulating the original array
+const replace2 = (arr, oldVal, newVal) => {
+ arr.forEach((ele, ind) => aar[ind]=arr[ind]==oldVal ? newVal : oldVal);
+}
+replace2(arr,1,2);
+console.log(arr);
 
 
 // Sort the array in ascending order(without using sort())
@@ -101,4 +109,4 @@ function findIndex(arr, target) {
   }
   return -1;
 }
-findIndex(arr, 1);
+console.log(findIndex(arr, 1));
