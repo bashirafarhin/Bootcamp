@@ -25,8 +25,14 @@ const data =[
 ]
 
 const logData = (data) => {
-    const [ {age}, {name}] = data;
+    const [{age}, {name}] = data;
     console.log(`${name} age is ${age}`);
 }
 
 logData(data)
+
+
+var a  = [1,2,3,4,5]
+var [,two,,,five]=a;
+
+console.log(two, five);

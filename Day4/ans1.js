@@ -3,4 +3,4 @@
 //     return a + b;
 // }
 
-const add = (a=0,b=0) => a+b
+const add = (a,b) => a+b

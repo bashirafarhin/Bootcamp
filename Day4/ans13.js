@@ -9,7 +9,7 @@ const flattenArray = (arr) => {
    let newFlatterArr=[];
    for(let ele of arr){
     if(Array.isArray(ele)){
-        newFlatterArr=[...newFlatterArr, ...flattenArray(ele)];
+        newFlatterArr.push(...flattenArray(ele));
     } else {
         newFlatterArr.push(ele);
     }
@@ -17,3 +17,8 @@ const flattenArray = (arr) => {
    return newFlatterArr;
 }
 console.log(flattenArray([1, [2, [3, [4, 5]]]]));
+
+// approach 2
+// using inbuilt methods
+
+arr.flat()

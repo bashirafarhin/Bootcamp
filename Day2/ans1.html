@@ -6,7 +6,9 @@
     <title>Document</title>
 </head>
 <body>
-    <form onSubmit="return validateForm()">
+    
+    <!-- if true is received in onSubmit from the onSubmit handler function then submit event will fire else not -->
+    <form action="/dummy" onSubmit="return validateForm()">
         <label for="name">Name:</label>
         <input id="name" type="text" placeholder="Enter your name"/>
 
@@ -37,14 +39,15 @@
             return false;
         }
 
-        if(age < 17){
+        if(age <= 17){
             alert("Age should be greater than or equal to 18");
             return false;
         }
 
-        alert("Form Submitted successfully")
+        alert("Form Submitted successfully");
         return true;
     }
+
 
 </script>
 

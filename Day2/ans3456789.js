@@ -15,22 +15,23 @@ console.log(firstElement);
 
 
 // Insert a number at a specific index.
-arr.splice(1, 0, 100); // insert 2 at index 1
+// splice(index, count, ele to add)
+arr.splice(1, 0, 100); // insert 100 at index 1
 console.log(arr[1]);
 
 
 
 // Replace all occurrences of a number with another number.
 
-// by creating new array
+// approach 1 - by creating new array
 const replace = (arr, oldVal, newVal) => {
   return arr.map((ele) => ele==oldVal ? newVal : ele);
 }
 console.log(replace(arr,1,2));
 
-// by manipulating the original array
+// approach 2 - by manipulating the original array
 const replace2 = (arr, oldVal, newVal) => {
- arr.forEach((ele, ind) => aar[ind]=arr[ind]==oldVal ? newVal : oldVal);
+ arr.forEach((ele, ind) => arr[ind]=arr[ind]==oldVal ? newVal : oldVal);
 }
 replace2(arr,1,2);
 console.log(arr);
@@ -101,7 +102,15 @@ console.log(arr);
 
 
 // Find the index of a specific number.
-function findIndex(arr, target) {
+
+// approach 1 - with using inbuilt method - indexOf
+console.log(arr.indexOf(3));
+
+// approach 2 - with using inbuilt method - findIndex
+console.log(arr.findIndex((ele) => ele==target));
+
+// approach 3 - without using inbuilt method
+function findIndex2(arr, target) {
   for (var i = 0; i < arr.length; i++) {
     if (arr[i] === target) {
       return i;
@@ -109,4 +118,4 @@ function findIndex(arr, target) {
   }
   return -1;
 }
-console.log(findIndex(arr, 1));
+console.log(findIndex2(arr, 1));

@@ -1,0 +1,25 @@
+.footer {
+    background-color: $dark-green;
+    color: $white;
+    padding: 60px 0;
+
+    &-container {
+        display: flex;
+        justify-content: space-between; // pushes left and right apart
+        align-items: flex-start;
+        gap: 120px; // controls spacing between left & right groups
+    }
+
+    &-left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 320px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+}

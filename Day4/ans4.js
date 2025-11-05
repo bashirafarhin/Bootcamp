@@ -20,7 +20,7 @@ const person = {
 };
 
 const logDetail = (person) => {
-    const { name, address : { city }} = person;
+    const { name, address : { city } = {}} = person;
     console.log(`${name} lives in ${city}.`);
 }
 

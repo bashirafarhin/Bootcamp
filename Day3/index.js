@@ -1,4 +1,8 @@
-(function () {
+
+
+window.onload = function () {
+
+  (function () {
 
   function Product(name, price, category) {
     this.name = name;
@@ -43,6 +47,7 @@
 
     for (var prod of productData){
 
+      function createSingleProduct() {
         var product = new Product(prod.name, prod.price, prod.category);
         products.push(product);
 
@@ -77,27 +82,29 @@
         productContainer.appendChild(productCard);
 
         // add event listener to the products
-        productCard.addEventListener("mousemove", () => {
+        productCard.addEventListener("mouseenter", () => {
             productCard.classList.add("product-hover");
         })
 
-        productCard.addEventListener("mouseout", () => {
+        productCard.addEventListener("mouseleave", () => {
             productCard.classList.remove("product-hover");
         })
 
+      }
+      createSingleProduct();
     }
 
 
 }
 
  function getHighestPrice(otherProduct){
-    if(!this.price){
-        return otherProduct.price;
+    if(!this || !this.price){
+        return otherProduct;
     }
     if(otherProduct.price>this.price){
-        return otherProduct.price;
+        return otherProduct;
     }
-    return this.price;
+    return this;
  }
 
   function showCostliestProduct() {
@@ -107,10 +114,11 @@
     for(var prod of products){
         costliest=getHighestPrice.call(costliest, prod);
     }
-    costliestProductContainer.textContent=costliest;
+    costliestProductContainer.textContent=costliest.price;
     
   }
-
   createProducts();
   showCostliestProduct();
 })();
+
+}

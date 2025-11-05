@@ -38,3 +38,13 @@ console.log(obj.b.c);
 // approach 2
 
 // using JSON methods
+const clone = JSON.parse(JSON.stringify(obj));
+
+// Simple one-liner, Works for plain data (objects, arrays, numbers, strings, booleans).
+// Its disadvantages is that it loses functions, Date, Map, Set, undefined, Infinity, Symbol, breaks cyclic (circular) references
+
+
+// approach 3
+
+// using structured clone
+const clone1 = structuredClone(obj);

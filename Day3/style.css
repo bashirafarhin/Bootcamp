@@ -74,3 +74,10 @@ transform: scale(1.05);
 background-color: #f0f9ff;
 box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
+
+.product-hover,
+.product-card:hover {
+  transform: scale(1.05);
+  background-color: #f0f9ff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}

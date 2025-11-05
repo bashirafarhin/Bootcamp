@@ -125,9 +125,16 @@
         return true;
       }
 
-      function addRow(student) {
+      function addRowApproach2(student) {
         var table = document.getElementById("studentTable");
         var newRow = table.insertRow(-1);
+
+        // insertRow -> It belongs to the HTMLTableElement API.
+        // It returns the new row element you just created.
+        // 0     Insert as the first row (top of the table)     insertRow(0)
+        // 1, 2, …  Insert at that specific row index            insertRow(2) inserts before the current 3rd row
+        // -1 or index >= number of existing rows              Insert as the last row (end of the table)
+        // Negative (less than -1)           Throws an error insertRow(-2) → IndexSizeError
 
         // order must match table header (Name, Maths, Chemistry, Physics, Bio, Economics, Total, Average)
         newRow.insertCell(0).innerHTML = student.name;
@@ -138,6 +145,21 @@
         newRow.insertCell(5).innerHTML = student.economics;
         newRow.insertCell(6).innerHTML = student.total;
         newRow.insertCell(7).innerHTML = student.average.toFixed(2);
+      }
+
+      function addRow(student) {
+        var table = document.getElementById("studentTable");
+        var newRow = document.createElement("tr");
+        var column = ["name", "maths", "chemistry", "physics", "bio", "economics", "total", "average"];
+
+        for(let columnName of column){
+          var col = document.createElement("td");
+          col.innerText=student[columnName];
+          newRow.appendChild(col);
+        }
+
+        table.appendChild(newRow);
+        
       }
 
       function calculateAverage(totalMarks, totalSubjects) {
@@ -157,21 +179,25 @@
         student.name = name;
 
         for (var i = 0; i < subjects.length; i++) {
+
           var subj = subjects[i];
-          var marks = prompt(
-            "Enter your " + subj + " marks(Out of 100)"
-          ).trim();
+
+          var marks = prompt(`Enter your ${subj} marks(Out of 100)`).trim();
+
           marks = Number(marks);
           if (!validateMarksField(marks)) {
             return false;
           }
+
           student[subj] = marks;
           totalMarks += marks;
+          
         }
 
         student["total"] = totalMarks;
         student["average"] = calculateAverage(totalMarks, totalSubjects);
         addRow(student);
+        // addRowApproach2(student);
         alert("Student added successfully");
         return true;
       }
