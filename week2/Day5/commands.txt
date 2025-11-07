@@ -1,0 +1,143 @@
+why ubuntu why not redhat
+everything linux is a file
+java
+apt? yarn?
+command to take out kernel
+even socket pendrive is also file
+
+src star called installation using gcc command
+
+what is snap?
+.deb .rpm yum?
+diff between deb vs src
+
+debian?
+snap?
+
+JAVA compilation
+learn aws ec2
+
+cd /
+cd ~
+pwd
+cd double tap /
+autocomplete
+shortcuts
+
+what is su? sudo?
+what is meant by different user
+
+cd tilda~ direct to home
+
+ls -l
+
+ls -l regex
+
+switches
+
+absolute switching between directories
+
+cd ~
+hidden directory command
+
+learn response of commands
+
+how to create files touch filename
+how to create hidden files .
+
+open file in interactive mode
+
+alias
+
+how to remove empty directory
+how to remove directory
+recursive commands
+
+man command
+
+copy commands
+only content copy?
+
+you can use anywhere relative and absolute path
+
+
+mkdir ~p dir.......
+
+
+drwxr-x--- ..............
+user permission grp other
+
+control by chmod chown
+
+d
+rwx
+x
+
+
+when user is created a group of same name is created
+
+group is used to combine user and give combine permission
+owner of grp is always one
+
+a grp has always one owner
+
+
+
+asked in interview
+
+
+owner cannot be a part of user
+owner is a user
+owner is related to folder
+
+a owner can have only 1 group
+port of ssh 22
+tcp and udp
+
+ssd ssh
+fibre
+how data travels from our machine using synchronization number to the server
+
+
+which directory is taking more space
+total space in a disk
+similar questions
+which fs is taking more space, parition along with name and size
+
+difference between du and df
+system parition commands
+df can enter in any folder or df?
+
+what is tree which we have installed
+
+
+can we search files which we have updated
+can we search files which we have updated using timestamp
+
+using find command will give extension
+
+how do you archieve those files
+how do you archieve those files using automationn
+using cron tabs provided by linux
+
+difference between apt and snap
+
+
+
+
+check if app is present or not
+which appName/ command appName
+tell path of app is app is installed else print
+
+check version
+appName --version
+
+
+
+
+
+
+
+
+
+

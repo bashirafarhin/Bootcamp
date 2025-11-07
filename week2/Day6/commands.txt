@@ -1,0 +1,31 @@
+Create a collection in postman with get and post apis where base url will be saved in environment variable.
+Connect your local database with your Db tool like DBeaver/ Workbench and try running scripts, export and import data, check the query tuning option.
+Practice debugging the java code with IntelliJ debugger, try and get handy with evaluator.
+
+ans1 -> on postman, added screenshots, given postman collection to test
+ans2 -> written commands, added screenshots, added .csv files
+
+installed mysql entered as root user and entered password
+installed dbeaver connected with mysql driver
+created database on sql script, run it, export the data
+
+CREATE DATABASE localdb;
+USE localdb;
+
+CREATE TABLE students (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(50),
+  age INT,
+  marks INT
+);
+
+INSERT INTO students (name, age, marks)
+VALUES
+  ('Aisha', 21, 90),
+  ('Ravi', 22, 78),
+  ('Noor', 20, 85),
+  ('Kiran', 23, 92);
+
+SELECT * FROM students;
+
+how to import data?

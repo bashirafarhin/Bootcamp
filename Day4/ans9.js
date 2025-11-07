@@ -36,3 +36,5 @@ var a  = [1,2,3,4,5]
 var [,two,,,five]=a;
 
 console.log(two, five);
+
+// can we store function in localstorage?
