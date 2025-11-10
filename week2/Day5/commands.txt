@@ -1,143 +1,102 @@
-why ubuntu why not redhat
-everything linux is a file
-java
-apt? yarn?
-command to take out kernel
-even socket pendrive is also file
+Assignment
 
-src star called installation using gcc command
-
-what is snap?
-.deb .rpm yum?
-diff between deb vs src
-
-debian?
-snap?
-
-JAVA compilation
-learn aws ec2
-
-cd /
-cd ~
-pwd
-cd double tap /
-autocomplete
-shortcuts
-
-what is su? sudo?
-what is meant by different user
-
-cd tilda~ direct to home
-
-ls -l
-
-ls -l regex
-
-switches
-
-absolute switching between directories
-
-cd ~
-hidden directory command
-
-learn response of commands
-
-how to create files touch filename
-how to create hidden files .
-
-open file in interactive mode
-
-alias
-
-how to remove empty directory
-how to remove directory
-recursive commands
-
-man command
-
-copy commands
-only content copy?
-
-you can use anywhere relative and absolute path
-
-
-mkdir ~p dir.......
-
-
-drwxr-x--- ..............
-user permission grp other
-
-control by chmod chown
-
-d
-rwx
-x
-
-
-when user is created a group of same name is created
-
-group is used to combine user and give combine permission
-owner of grp is always one
-
-a grp has always one owner
+1-Find and terminate the top memory-consuming process on your system.
+2-Create a user named devops and grant them sudo privileges.
+3-Connect to a remote server, create a directory, and copy files into it using SCP.
+4-List all active processes and save only those containing the word java into a file.
+5-Generate an SSH key pair and configure it for two different remote servers.
+6-Find all lines containing “error” in /var/log/syslog and redirect them to errors_found.txt
+7-Find all .conf files in /etc, sort them alphabetically, and save to conf_list.txt.
+8-Display the total number of unique shell types listed in /etc/passwd and save to shell_count.txt
+9-Explore vi/vim for  Creating a text file. Understand cursor movement, switching input mode (append, insert etc), deleting command, pasting content, undo , redo ,search , save and quit operations in vim. 
+10-Reset the current user password and reboot the system form shell. 
+11-Zip the content of your home directory via tar and send it via scp to other person laptop. Unzip the content on other person laptop via tar. 
+12-Install and setup application via apt - mysql, postman, docker, dbeaver
 
 
 
-asked in interview
+ans1
 
+ps aux --sort=-%mem | head -n 10
 
-owner cannot be a part of user
-owner is a user
-owner is related to folder
+ps aux → lists all running processes with details.
+--sort=-%mem → sorts them in descending order by memory usage (highest first).
+head -n 10 → show only top 10
 
-a owner can have only 1 group
-port of ssh 22
-tcp and udp
-
-ssd ssh
-fibre
-how data travels from our machine using synchronization number to the server
-
-
-which directory is taking more space
-total space in a disk
-similar questions
-which fs is taking more space, parition along with name and size
-
-difference between du and df
-system parition commands
-df can enter in any folder or df?
-
-what is tree which we have installed
-
-
-can we search files which we have updated
-can we search files which we have updated using timestamp
-
-using find command will give extension
-
-how do you archieve those files
-how do you archieve those files using automationn
-using cron tabs provided by linux
-
-difference between apt and snap
+note the PID of the process, pass it in below line
+sudo kill PID
 
 
 
+ans2
 
-check if app is present or not
-which appName/ command appName
-tell path of app is app is installed else print
+sudo adduser devops
+It will ask you to set a password and some optional info (you can just press Enter to skip).
+This creates a home directory /home/devops.
 
-check version
-appName --version
+sudo usermod -aG sudo devops
+This adds the user devops to the sudo group, which grants administrative rights.
+
+To confirm:
+groups devops
+You should see sudo listed among the groups.
+
+Switch to that user (optional check)
+su - devops
 
 
 
+ans3
+ans4
+
+List active process | filter lines containing java | save them to a new file
+ps aux | grep java > ProcessContainingTextJava.txt
+
+ps aux → lists all active processes with details.
+grep java → filters only lines that contain the word java.
+> → redirects output to a file.
+ProcessHavingNameJava.txt → the file name (you can name it anything).
 
 
+ans5
+ans6
+grep -n "error" /var/log/syslog > /home/bashira-farhin/Downloads/error_found.txt
+
+ans7
+find /etc -name "*.conf" | sort > /home/bashira-farhin/Downloads/conf_list.txt
+
+find /etc -name "*.conf" -> Finds all files ending with .conf inside /etc (recursively).
+
+ans8
+cut -d: -f7 /etc/passwd | sort | uniq | wc -l > /home/bashira-farhin/Downloads/shell_count.txt
+
+ans10
+passwd -> to change user password
+sudo reboot -> to reboot system
+
+ans11
 
 
+ans12
+Install mysql
+sudo apt update
+sudo apt install mysql-server -y
+after install
+sudo systemctl start mysql
+sudo systemctl enable mysql
+sudo systemctl status mysql
+to log in
+sudo mysql
 
+Install postman
+Postman isn’t in default apt repo, but you can install it via Snap (Ubuntu default):
+sudo snap install postman
 
+Install Docker
+sudo apt update
+sudo apt install docker.io -y
 
+Enable and Start Docker service
+sudo systemctl enable docker
+sudo systemctl start docker
+sudo systemctl status docker

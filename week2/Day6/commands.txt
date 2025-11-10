@@ -29,3 +29,70 @@ VALUES
 SELECT * FROM students;
 
 how to import data?
+
+
+
+
+
+
+
+
+
+
+
+manage project using ssh KEY
+
+1. Generate a fresh SSH key
+ssh-keygen -t ed25519 -C "farhinbashira@gmail.com"
+it will ask the file path where it will store the public and private key and then it will
+ask for passphrase key
+
+2. Add the key to the SSH agent( to add identity )
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+
+3. ssh-add -l( to verify if key is added )
+
+4. Copy your new public key and add your new key to GitHub ssh key
+cat ~/.ssh/id_ed25519.pub( to get public key )
+
+5. ssh -T git@github.com( testing new setup )
+if everything is good then it will show authenticated
+
+6. Check SSH agent is running
+eval "$(ssh-agent -s)"
+
+7. ssh -T git@github.com( to test github connection )
+
+8. Clone a repository via SSH and make changes and then push it it will not ask you to
+enter username and password
+
+
+
+
+
+
+Assignment
+Configure SSH key in github account.
+Create a repository on github account.
+Clone the above repository on your local from github. 
+Create a new file, say test.txt, in main/master branch. Make some changes to this file and commit the changes.
+Create two branches from main/master branch, say f1 and f2.
+How can you resolve a merge conflict in Git, provide an example.
+
+on branch f1 made the changes to the test.txt and commit the changes
+on branch f2 made the changes to the test.txt and commit the changes
+on branch main while merging f1 -> no conflicts
+on branch main while merging f1 -> conflicts -> manually selected the lines which i wnated to kept
+then push the changes on main branch
+check this repo -> https://github.com/bashirafarhin/GitAssignment
+
+
+Show how divergence occurs in a branch.
+
+Difference between git init and git clone.
+Difference between git branch and git checkout.
+Difference between git fetch and git pull.
+How to squash commits?
+Show the difference between git reset and git revert.
+Delete branch from local and remote.
