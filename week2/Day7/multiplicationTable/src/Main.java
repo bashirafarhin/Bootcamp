@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// Multiplication Table
+// Print the multiplication table for any number entered by the user.
+
 public class Main {
 
     public static void multiplicationTable() {

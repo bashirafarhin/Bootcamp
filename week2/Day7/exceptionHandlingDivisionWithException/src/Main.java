@@ -1,6 +1,11 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// Division with Exception
+// Accept two integers from user and divide them.
+// Handle division by zero using try-catch.
+// Print “Division completed” in a finally block.
+
 public class Main {
 
     public static double division() {

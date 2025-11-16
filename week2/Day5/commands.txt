@@ -19,12 +19,22 @@ ans1
 
 ps aux --sort=-%mem | head -n 10
 
-ps aux → lists all running processes with details.
---sort=-%mem → sorts them in descending order by memory usage (highest first).
-head -n 10 → show only top 10
+ps Process Status — shows information about active processes.
+a Show processes for all users (not just your own).
+u Display process information in user-oriented format — adds columns like USER, %CPU, %MEM, etc.
+x Show processes not attached to a terminal — e.g. background daemons or system services.
 
-note the PID of the process, pass it in below line
-sudo kill PID
+--sort=-%mem
+Sorts the processes by the %MEM column (memory usage).
+--sort → tells ps to sort results
+-%mem → the minus sign (-) means descending order (highest memory first)
+%mem → sort key (the memory usage column)
+
+| (pipe)
+Sends the output of one command as input to another.
+
+head -n 10
+Displays only the first 10 lines of the input.
 
 
 
@@ -47,6 +57,47 @@ su - devops
 
 
 ans3
+
+-> transfering files from linux to windows
+
+running SCP from Linux
+
+check username of windows
+whoami
+
+check ip of windows
+ipconfig
+
+copy files from one to another, on windows
+scp "path/to/file" windowsUsername@windowsIp:/destination/path/
+
+
+-> transfering files from windows to linux
+
+running SCP from Windows using PowerShell
+
+check username of linux
+whoami
+
+check ip of linux
+ip a
+
+check if scp is installed or not on windows
+scp
+Windows must have OpenSSH Server enabled for SCP to work.
+
+copy files from one to another, on windows
+scp "path/to/file" linuxUsername@linuxIp:/destination/path/
+
+Both machines must be on same WiFi network
+Otherwise, you need port forwarding / cloud server access.
+why?
+scp by default only uploads single files, not directories.
+To upload a folder, you must use -r (recursive).
+
+
+
+
 ans4
 
 List active process | filter lines containing java | save them to a new file
@@ -58,7 +109,46 @@ grep java → filters only lines that contain the word java.
 ProcessHavingNameJava.txt → the file name (you can name it anything).
 
 
+
+
 ans5
+
+Generate SSH Key on Linux (your local machine)
+
+ssh-keygen -t ed25519 -C "assignment-key"
+this will create a public and private key
+~/.ssh/id_ed25519
+~/.ssh/id_ed25519.pub
+
+Configure key for Linux (Server 1)
+Since the key is already on Linux, just add it to authorized_keys:
+cat ~/.ssh/id_ed25519.pub >> ~/.ssh/authorized_keys
+
+Set permissions:
+chmod 600 ~/.ssh/authorized_keys
+chmod 700 ~/.ssh
+
+Now test:
+ssh bashira-farhin@<LINUX_IP>
+It should log in without password.
+
+Configure key for Windows (Server 2)
+
+Copy key from Linux to Windows
+scp ~/.ssh/id_ed25519.pub windowsUsername@<WINDOWS_IP>:/Users/hp/.ssh/
+Add the public key on Windows
+type C:\Users\hp\.ssh\id_ed25519.pub >> C:\Users\hp\.ssh\authorized_keys
+Fix permissions (important):
+icacls C:\Users\hp\.ssh\authorized_keys /inheritance:r
+icacls C:\Users\hp\.ssh\authorized_keys /grant hp:F
+Test SSH from Linux → Windows
+ssh hp@<WINDOWS_IP>
+
+
+
+
+
+
 ans6
 grep -n "error" /var/log/syslog > /home/bashira-farhin/Downloads/error_found.txt
 
@@ -75,6 +165,30 @@ passwd -> to change user password
 sudo reboot -> to reboot system
 
 ans11
+
+Create a TAR archive of your home directory
+tar -cvzf home_backup.tar.gz /home/bashira-farhin
+
+c → create
+v → verbose (show files)
+z → gzip compression
+f → filename
+home_backup.tar.gz → output file
+/home/bashira-farhin → directory to compress
+
+Send the TAR archive via SCP to another person’s laptop
+scp home_backup.tar.gz otherMachineUsername@otherMachinePath:/C:/Users/hp/Downloads/
+
+Extract (unzip) the TAR file on the other laptop
+tar -xvzf home_backup.tar.gz -C C:/Users/hp/Downloads/
+
+x → extract
+v → verbose
+z → unzip (gunzip)
+f → file
+-C → extract into a specific directory
+
+
 
 
 ans12

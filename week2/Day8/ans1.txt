@@ -1,0 +1,311 @@
+What is the Java Collections Framework? Explain its advantages.
+
+java collection
+
+The Java Collections Framework (JCF) is a set of classes and interfaces that provide ready-made data structures (like lists, sets, maps) to store and manipulate groups of objects efficiently.
+
+Iterable (interface)
+   ↑
+Collection (interface)
+   ↑
+ ┌───────────────┬───────────────┐
+ List            Set             Queue
+ (interface)     (interface)     (interface)
+
+List → ArrayList, LinkedList, Vector, Stack
+Set  → HashSet, LinkedHashSet, TreeSet
+Queue → PriorityQueue, ArrayDeque
+Map  → HashMap, LinkedHashMap, TreeMap, Hashtable( not a part of collection )
+
+
+Iterable Interface
+Top-most interface of the collection hierarchy.
+Defines method Iterator<T> iterator() for traversing elements.
+Inbuilt Working
+Provides for-each loop functionality.
+Every collection class (List, Set, Queue) implements Iterable.
+Advantages
+Simplifies element traversal.
+Standardized interface across all collections.
+Disadvantages
+Only forward traversal supported (no reverse).
+
+
+public interface Iterable<T> {
+    Iterator<T> iterator();
+}
+
+Collections implments iterable and thats why we can do for each loop traversal on them
+for (var x : list) { }
+
+
+
+Collection
+Common Methods in Collection Interface
+Method	Description
+add(E e)	Add an element
+remove(Object o)	Remove an element
+clear()	Remove all elements
+size()	Get number of elements
+isEmpty()	Check if collection is empty
+contains(Object o)	Check if element exists
+iterator()	Return an iterator for looping
+all these methods are extended and overridden by list, set and queue
+
+
+
+List
+maintains insertion order, allows duplicates, allows indexing (get by position)
+methods
+
+
+
+ArrayList
+Dynamic array( Internally uses a dynamic array (Object[] elementData) )
+initially 16 elements
+Grows 1.5× when full(75% refactor)
+Stores elements in contiguous memory
+Not synchronized (not thread-safe)
+
+| Operation                 | Time Complexity | Explanation                                |
+| ------------------------- | --------------- | ------------------------------------------ |
+| Access by index           | **O(1)**        | Direct access via index (array-based)      |
+| Insert at end (amortized) | **O(1)**        | Adds element to end, resizing occasionally |
+| Insert/delete in middle   | **O(n)**        | Shifting required                          |
+| Search                    | **O(n)**        | Linear scan                                |
+
+
+LinkedList
+Doubly linked list
+Each node has prev + next
+Not synchronized (not thread-safe)
+
+| Operation                  | Time     | Explanation            |
+| -------------------------- | -------- | ---------------------- |
+| Access by index            | **O(n)** | Must traverse nodes    |
+| Insert/delete at start/end | **O(1)** | Just change node links |
+| Insert/delete in middle    | **O(n)** | Traverse to node first |
+| Search                     | **O(n)** | Linear traversal       |
+
+
+Vector (Legacy)
+Similar to ArrayList but thread-safe (synchronized methods).
+Grows by 100% (doubles) when full.
+Vector operations are slower when compared to ArrayList due to synchronization
+Synchronization slows performance
+Replaced by Collections.synchronizedList or CopyOnWriteArrayList
+
+
+Stack (Legacy)
+Extends Vector
+Uses LIFO operations
+push()
+pop()
+peek()
+Use ArrayDeque instead of Stack.
+
+
+
+
+
+
+SET
+Does not allow duplicates, Does not use indexing, Mostly used for membership testing
+methods
+
+
+HashSet
+Unordered Set
+Backed by a HashMap
+Consumes more memory (internal HashMap overhead).
+HashSet<String> set = new HashSet<>();
+
+Internal Working
+Internally uses a HashMap (each element is stored as a key, value is a dummy object).
+Each element’s hashCode() determines its bucket location.
+If two elements have same hash (collision), they go into a bucket chain (Linked List or Tree after Java 8).
+Duplicate elements are not added — determined using equals() + hashCode().
+
+Insertion Process:
+Compute hash using hashCode().
+Determine bucket index via hash.
+If bucket empty → add element.
+If element already exists (equals() true) → skip.
+If collision → add to chain / tree (Java 8+).
+
+Deletion Process:
+Find bucket via hash.
+Traverse list/tree → remove matching key.
+
+| Operation | Average  | Worst Case                               |
+| --------- | -------- | ---------------------------------------- |
+| Add       | **O(1)** | **O(n)** (if all elements in one bucket) |
+| Remove    | **O(1)** | **O(n)**                                 |
+| Contains  | **O(1)** | **O(n)**                                 |
+| Iterate   | **O(n)** | **O(n)**                                 |
+
+
+
+LinkedHashSet
+ordered
+Backed by LinkedHashMap
+
+Internal Working
+
+Extends HashSet but maintains a doubly linked list across all entries.
+Keeps track of insertion order (the order in which elements are inserted).
+Same hashing mechanism as HashSet, but LinkedHashMap adds link pointers between entries.
+
+Insertion Process:
+Uses hashing like HashSet to find bucket.
+Adds entry to both:
+Hash table (for lookup).
+
+Linked list (for maintaining order).
+Deletion Process:
+Removes from both linked list and hash table.
+
+
+| Operation | Average  | Explanation               |
+| --------- | -------- | ------------------------- |
+| Add       | **O(1)** | Hash-based                |
+| Remove    | **O(1)** | Hash-based                |
+| Contains  | **O(1)** | Hash-based                |
+| Iterate   | **O(n)** | Maintains insertion order |
+
+
+
+TreeSet
+sorted order(unordered)
+Backed by TreeMap (Red-Black Tree)
+
+Internal Working
+Internally uses a balanced binary search tree (Red-Black Tree).
+Elements are sorted in natural order (ascending by default) or by a custom Comparator.
+Does not allow duplicates (comparison determines equality).
+
+Insertion Process:
+Compare new element using compareTo() or Comparator.
+Insert into appropriate position in tree.
+Rebalance tree (Red-Black property).
+
+Deletion Process:
+Remove element → rebalance tree to maintain height balance.
+
+| Operation        | Time         |
+| ---------------- | ------------ |
+| Add              | **O(log n)** |
+| Remove           | **O(log n)** |
+| Contains         | **O(log n)** |
+| Iterate (sorted) | **O(n)**     |
+
+
+
+
+
+
+QUEUE
+FIFO
+methods
+
+
+PriorityQueue
+Binary Heap (min-heap or max-heap)
+Smallest element always at top
+| Operation | Complexity |
+| --------- | ---------- |
+| add       | O(log n)   |
+| remove()  | O(log n)   |
+| peek()    | O(1)       |
+
+
+ArrayDeque
+Resizable circular array
+Very fast
+| Operation              | Complexity |
+| ---------------------- | ---------- |
+| addFirst/addLast       | O(1)       |
+| removeFirst/removeLast | O(1)       |
+| peek                   | O(1)       |
+
+
+
+
+
+Map Interface
+Interface	java.util.Map<K, V> ( Separate from Collection — not a subtype )
+Purpose	Stores data in key-value pairs
+Key rule	Keys must be unique
+Value rule	Values can repeat
+
+
+HashMap
+
+unordered
+Based on hashing.
+Internally stores entries in an array of buckets (each bucket holds key-value pairs).
+Each bucket stores a linked list of nodes (or a balanced tree if collisions are high).
+Allows 1 null key and multiple null values.
+Dynamic resizing and balanced tree optimization.
+Not thread-safe.
+Hash table + Linked List / Tree (Java 8+)
+
+Deletion:
+Locate bucket via hash, traverse chain/tree, remove node.
+
+| Operation | Average | Worst Case                     |
+| --------- | ------- | ------------------------------ |
+| put()     | O(1)    | O(n) (all keys in same bucket) |
+| get()     | O(1)    | O(n)                           |
+| remove()  | O(1)    | O(n)                           |
+| iteration | O(n)    | O(n)                           |
+
+
+
+LinkedHashMap
+
+ordered
+Hash table + Doubly Linked List
+Extends HashMap but maintains a linked list of entries.
+The linked list preserves insertion order (or access order if configured).
+Each entry stores references to before and after nodes.
+
+Insertion Process:
+Uses same hashing as HashMap.
+Adds entry to both:
+Hash table (for lookup)
+Linked list (for ordering)
+| Operation | Average | Explanation       |
+| --------- | ------- | ----------------- |
+| put()     | O(1)    | Hash-based        |
+| get()     | O(1)    | Hash-based        |
+| remove()  | O(1)    | Hash-based        |
+| iteration | O(n)    | Predictable order |
+
+
+
+TreeMap
+
+unordered, sorted
+Stores key-value pairs in a balanced Red-Black Tree.
+Keys are sorted in natural order (Comparable) or via custom Comparator.
+On insertion/deletion, tree is rebalanced automatically.
+
+| Operation | Time                   |
+| --------- | ---------------------- |
+| put()     | O(log n)               |
+| get()     | O(log n)               |
+| remove()  | O(log n)               |
+| iteration | O(n) (in sorted order) |
+
+
+
+
+
+
+
+
+Advantages of Java Collections Framework
+Provides ready-to-use data structures and algorithms, eliminating the need to implement them from scratch.
+Optimized implementations like HashMap or ArrayList offer better performance than custom-coded structures.
+Methods like sorting, searching, and reverse are available through the Collections class.

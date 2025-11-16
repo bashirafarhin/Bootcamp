@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// Factorial Calculator
+//  Calculate the factorial of a number using a for loop.
+
 public class Main {
     public static void printFactorial() {
         System.out.println("Enter number for factorial");

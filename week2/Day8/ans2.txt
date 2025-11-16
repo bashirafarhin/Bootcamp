@@ -1,0 +1,52 @@
+List the differences between Vector, ArrayList, LinkedList, and HashSet.
+
+
+1. Vector:
+
+Implements the List interface.
+
+Maintains insertion order.
+
+Allows duplicate elements.
+
+Synchronized, so it is thread-safe but slower than ArrayList.
+
+Internally uses a dynamic array.
+
+2. ArrayList:
+
+Implements the List interface.
+
+Maintains insertion order.
+
+Allows duplicates.
+
+Not synchronized by default.
+
+Faster than Vector in single-threaded operations.
+
+Internally uses a dynamic array.
+
+3. LinkedList:
+
+Implements List and Deque interfaces.
+
+Maintains insertion order.
+
+Allows duplicates.
+
+Not synchronized.
+
+Internally uses a doubly linked list, so it is efficient for insertions/deletions in the middle but slower for random access.
+
+4. HashSet:
+
+Implements the Set interface.
+
+Does not maintain order.
+
+Does not allow duplicates.
+
+Not synchronized.
+
+Internally uses a hash table, making it very fast for searching, insertion, and deletion operations.

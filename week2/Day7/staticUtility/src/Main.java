@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// Static Utility Class
+// Create a MathUtils class with static methods for max, min, and average.
+// Call these without creating an object.
+
 public class Main {
     public static void main(String[] args) {
 

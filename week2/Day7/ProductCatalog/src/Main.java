@@ -1,6 +1,11 @@
 import java.util.ArrayList;
 import java.util.List;
 
+// Product Catalog (with Encapsulation & Exceptions)
+// Create a Product class with private fields for id, name, and price.
+// Throw a custom exception if price is negative.
+// Create 3–5 product objects and display their details.
+
 public class Main {
     public static void main(String[] args) {
         List<Product> products = new ArrayList<>();

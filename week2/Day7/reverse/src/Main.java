@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// Reverse a Number
+//  Reverse the digits of an integer using a while loop.
+
 public class Main {
 
     public static void reverseNumber() {

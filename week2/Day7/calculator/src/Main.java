@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// Simple Calculator
+// Create a Calculator class with methods add, subtract, 
+// multiply, and divide.
+
 public class Main {
     public static void main(String[] args) {
 

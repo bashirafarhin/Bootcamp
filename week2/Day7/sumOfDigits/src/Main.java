@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// Sum of Digits
+// Accept a number and find the sum of all its digits. E.g. 1234 → 10 (1+2+3+4)
+
 public class Main {
 
     public static void sumOfDigits() {

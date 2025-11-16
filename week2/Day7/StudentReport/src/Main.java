@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// Student Report
+// Create a Student class with fields for name and marks in 3 subjects.
+// Add a method to calculate total and average marks.
+
 public class Main {
 
     public static void main(String[] args) {

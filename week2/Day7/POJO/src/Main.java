@@ -1,6 +1,11 @@
 import java.util.ArrayList;
 import java.util.List;
 
+
+// Customer POJO
+// Create a Customer class with id, name, email.
+// Create 3 objects and print their details using a list.
+
 public class Main {
     public static void main(String[] args) {
 

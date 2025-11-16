@@ -84,6 +84,13 @@
     </table>
 
     <script>
+
+      let students = JSON.parse(localStorage.getItem("students")) || [];
+      
+      window.onload = function () {
+        students.forEach((student) => addRow(student));
+      };
+
       function validateMarksField(mark) {
         if (mark === "") {
           alert("Marks are required");
@@ -196,6 +203,8 @@
 
         student["total"] = totalMarks;
         student["average"] = calculateAverage(totalMarks, totalSubjects);
+        students.push(student);
+        localStorage.setItem("students", JSON.stringify(students));
         addRow(student);
         // addRowApproach2(student);
         alert("Student added successfully");

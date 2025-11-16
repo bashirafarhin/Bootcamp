@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// Custom Exception: Invalid Email Exception
+// Validate an email string.
+// Throw InvalidEmailException if it doesn’t contain an “@” symbol.
+
 public class Main {
 
     public static void validateEmail(String email) throws InvalidEmailException {
