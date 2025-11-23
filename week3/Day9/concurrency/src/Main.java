@@ -15,6 +15,7 @@
 
 
 class Buffer {
+    
     private final int[] arr = new int[5];
     private int count = 0, in = 0, out = 0;
 

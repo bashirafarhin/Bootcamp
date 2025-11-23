@@ -151,6 +151,7 @@ ssh hp@<WINDOWS_IP>
 
 ans6
 grep -n "error" /var/log/syslog > /home/bashira-farhin/Downloads/error_found.txt
+-n means line number for each line
 
 ans7
 find /etc -name "*.conf" | sort > /home/bashira-farhin/Downloads/conf_list.txt
